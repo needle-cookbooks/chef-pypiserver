@@ -1,0 +1,4 @@
+cookbook 'pypiserver', :path => '/Users/cwj/chef/pypiserver'
+cookbook 'python', :locked_version => '1.0.8'
+cookbook 'build-essential', :locked_version => '1.1.0'
+cookbook 'yum', :locked_version => '0.6.2'
