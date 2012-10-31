@@ -7,8 +7,9 @@ PASSWD_FILE='-P <%= @options['passwd_file'] %>'
 <%- else -%>
 PASSWD_FILE=''
 <%- end -%>
-
+<%- if @options['virtualenv'] -%>
 . <%= @options['virtualenv'] %>/bin/activate
+<%- end -%>
 
 exec 2>&1
 exec chpst -u <%= @options['owner'] %>:<%= @options['group'] %> pypi-server $ARGS $PASSWD_FILE $STORAGE
