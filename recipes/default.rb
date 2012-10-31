@@ -25,7 +25,7 @@ user node['pypiserver']['user']
 
 venv = node['pypiserver']['virtualenv']
 
-directory ::File.join(node['pypiserver']['root'],'storage') do
+directory node['pypiserver']['storage'] do
   owner node['pypiserver']['user']
   group node['pypiserver']['group']
   recursive true
@@ -59,6 +59,7 @@ end
 
 runit_service 'pypiserver' do
   options('virtualenv' => venv,
+          'storage' => node['pypiserver']['storage'],
           'owner' => node['pypiserver']['user'],
           'group' => node['pypiserver']['group'],
           'port' => node['pypiserver']['port'],

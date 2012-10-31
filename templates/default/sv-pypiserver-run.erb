@@ -1,17 +1,14 @@
 #!/bin/bash
 # TODO make this more WSGI generic
-ROOT='<%= @options['root'] %>/current'
 ARGS='-p <%= @options['port'] %> -i <%= @options['address'] %>'
-STORAGE='<%= @options['root'] %>/storage'
+STORAGE='<%= @options['storage'] %>'
 <%- unless @options['passwd_file'].nil? -%>
 PASSWD_FILE='-P <%= @options['passwd_file'] %>'
 <%- else -%>
 PASSWD_FILE=''
 <%- end -%>
 
-cd $ROOT
-
-. <%= @options['root'] %>/env/bin/activate
+. <%= @options['virtualenv'] %>/bin/activate
 
 exec 2>&1
 exec chpst -u <%= @options['owner'] %>:<%= @options['group'] %> pypi-server $ARGS $PASSWD_FILE $STORAGE

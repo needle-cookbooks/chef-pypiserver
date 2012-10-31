@@ -1,5 +1,5 @@
 default['pypiserver']['version'] = '0.6.1'
-default['pypiserver']['root'] = '/opt/pypiserver'
+default['pypiserver']['storage'] = '/srv/pypiserver'
 default['pypiserver']['virtualenv'] = false
 default['pypiserver']['user'] = 'root'
 default['pypiserver']['group'] = 'root' #FIXME use value_for_platform
