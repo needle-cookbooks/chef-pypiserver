@@ -23,17 +23,21 @@ include_recipe "runit"
 
 user node['pypiserver']['user']
 
+venv = node['pypiserver']['virtualenv']
+
 directory ::File.join(node['pypiserver']['root'],'storage') do
   owner node['pypiserver']['user']
   group node['pypiserver']['group']
   recursive true
 end
 
-python_virtualenv ::File.join(node['pypiserver']['root'],'env') do
-  owner node['pypiserver']['user']
-  group node['pypiserver']['group']
-  interpreter node['pypiserver']['python_version']
-  action :create
+if venv
+  python_virtualenv venv do
+    owner node['pypiserver']['user']
+    group node['pypiserver']['group']
+    interpreter node['pypiserver']['python_version']
+    action :create
+  end
 end
 
 eggs = {  "pypiserver" => node['pypiserver']['version'],
@@ -41,7 +45,7 @@ eggs = {  "pypiserver" => node['pypiserver']['version'],
 
 eggs.each do |pkg,ver|
   python_pip pkg do
-    virtualenv ::File.join(node['pypiserver']['root'],'env')
+    virtualenv venv if venv && venv.length > 0
     version ver if ver && ver.length > 0
     action :install
   end
@@ -54,7 +58,7 @@ else
 end
 
 runit_service 'pypiserver' do
-  options('root' => node['pypiserver']['root'],
+  options('virtualenv' => venv,
           'owner' => node['pypiserver']['user'],
           'group' => node['pypiserver']['group'],
           'port' => node['pypiserver']['port'],
