@@ -32,6 +32,12 @@ directory node['pypiserver']['storage'] do
 end
 
 if venv
+  directory node['pypiserver']['virtualenv'] do
+    owner node['pypiserver']['user']
+    group node['pypiserver']['group']
+    recursive true
+  end
+
   python_virtualenv venv do
     owner node['pypiserver']['user']
     group node['pypiserver']['group']
