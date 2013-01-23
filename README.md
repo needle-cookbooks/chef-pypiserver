@@ -16,7 +16,7 @@ Attributes
 ==========
 
 * `version` - the version of pypiserver to install (defaults to 0.6.1)
-* `storage` - the directory path where python modules should be stored (defaults to `/opt/pypi-server/storage`)
+* `storage` - the directory path where python modules should be stored (defaults to `/opt/pypi-server/packages`)
 * `user` - the user to run pypiserver under (defaults to `root`)
 * `group` - the group to run pypiserver under (defaults to `root`)
 * `python_version` - the version of python interpreter to use for the virtualenv (defaults to `python2.7`)
