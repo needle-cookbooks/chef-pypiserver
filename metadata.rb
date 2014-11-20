@@ -1,3 +1,4 @@
+name       "pypiserver"
 maintainer       "Cameron Johnston"
 maintainer_email "cameron@rootdown.net"
 license          "Apache 2.0"
