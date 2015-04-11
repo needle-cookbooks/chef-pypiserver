@@ -7,9 +7,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,6 +28,7 @@ venv = node['pypiserver']['virtualenv']
 directory node['pypiserver']['storage'] do
   owner node['pypiserver']['user']
   group node['pypiserver']['group']
+  mode 0775
   recursive true
 end
 
@@ -70,5 +71,6 @@ runit_service 'pypiserver' do
           'group' => node['pypiserver']['group'],
           'port' => node['pypiserver']['port'],
           'address' => node['pypiserver']['address'],
-          'passwd_file' => node['pypiserver']['passwd_file'])
+          'passwd_file' => node['pypiserver']['passwd_file'],
+          'fallback_url' => node['pypiserver']['fallback_url'])
 end

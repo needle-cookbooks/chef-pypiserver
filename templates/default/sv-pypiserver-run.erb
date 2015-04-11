@@ -1,6 +1,11 @@
 #!/bin/bash
 # TODO make this more WSGI generic
 ARGS='-p <%= @options['port'] %> -i <%= @options['address'] %>'
+<%- if @options['fallback_url'].nil? -%>
+ARGS='$ARGS --disable-fallback'
+<%- else -%>
+ARGS='$ARGS --fallback-url <%= @options['fallback_url'] %>'
+<%- end -%>
 STORAGE='<%= @options['storage'] %>'
 <%- unless @options['passwd_file'].nil? -%>
 PASSWD_FILE='-P <%= @options['passwd_file'] %>'
