@@ -1,4 +1,4 @@
-default['pypiserver']['version'] = '0.6.1'
+default['pypiserver']['version'] = '1.1.7'
 default['pypiserver']['storage'] = '/opt/pypi-server/packages'
 default['pypiserver']['virtualenv'] = '/opt/pypi-server/env'
 default['pypiserver']['user'] = 'root'
