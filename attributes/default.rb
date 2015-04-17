@@ -1,4 +1,4 @@
-default['pypiserver']['version'] = '0.6.1'
+default['pypiserver']['version'] = '1.1.7'
 default['pypiserver']['storage'] = '/opt/pypi-server/packages'
 default['pypiserver']['virtualenv'] = '/opt/pypi-server/env'
 default['pypiserver']['user'] = 'root'
@@ -7,3 +7,4 @@ default['pypiserver']['python_version'] = 'python2.7'
 default['pypiserver']['address'] = "0.0.0.0"
 default['pypiserver']['port'] = 8080
 default['pypiserver']['passwd_file'] = nil
+default['pypiserver']['fallback_url'] = 'https://pypi.python.org/simple'
